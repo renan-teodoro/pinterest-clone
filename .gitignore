@@ -1,3 +1,4 @@
 .env
 pinterest_clone/__pycache__
+pinterest_clone/static/pictures_posts/*
 instance/*

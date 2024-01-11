@@ -7,9 +7,7 @@ Profile - {{ user }}
 {% block body %}
 <body>
 
-    <h1>
-        User Profile will be here!
-    </h1>
+    {% include "navbar.html" %}
     
     {% if form %}
     <form method="POST" enctype="multipart/form-data">
