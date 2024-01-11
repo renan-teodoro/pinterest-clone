@@ -21,8 +21,6 @@ Profile - {{ user }}
     <h2>
         This is the {{ user.username }}'s profile
     </h2>
-    
-        <a href="{{ url_for('logout') }}">Exit</a>
         
         
         {% for post in user.posts %}
