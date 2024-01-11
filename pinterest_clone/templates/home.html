@@ -25,12 +25,15 @@
             {{ form.email.label() }}
             {{ form.email() }}
 
+        </h2>
             {{ form.password.label() }}
             {{ form.password() }}
 
             {{ form.submitButton() }}
 
         </form>
+
+        <a href="{{ url_for('create_account') }}" class="btn btn-primary"> Don't you have an account? Click here to Sign Up!</a>
         {% endblock %}
 
     </body>
