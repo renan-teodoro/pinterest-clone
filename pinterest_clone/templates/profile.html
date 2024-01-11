@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+
+{% block title %}
+Profile - {{ user }}
+{% endblock %}
+
+{% block body %}
+<body>
+    <h1>
+        User Profile will be here!
+    </h1>
+
+    <h2>
+        This is the {{ user }}'s profile
+    </h2>
+    
+        <a href="{{ url_for('home') }}">Exit</a>
+</body>
+{% endblock %}

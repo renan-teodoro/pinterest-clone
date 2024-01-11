@@ -1,0 +1,26 @@
+{% extends "home.html" %}
+
+{% block title %}
+Registration - Pinterest
+{% endblock %}
+
+{% block form %}
+<form method="POST">
+{{ form.csrf_token }}
+
+    {{ form.email.label() }}
+    {{ form.email() }}
+
+    {{ form.username.label() }}
+    {{ form.username() }}
+
+    {{ form.password.label() }}
+    {{ form.password() }}
+
+    {{ form.confirmPassword.label() }}
+    {{ form.confirmPassword() }}
+
+    {{ form.submitButton() }}
+
+</form>
+{% endblock %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}
+            Pinterest
+            {% endblock %}
+        </title>
+    </head>
+    {% block body %}
+    <body>
+        <h1>
+            Welcome to pinterest clone
+        </h1>
+
+        <h2>
+            In development...
+        </h2>
+
+        {% block form %}
+        <form method="POST">
+            {{ form.csrf_token }}
+
+            {{ form.email.label() }}
+            {{ form.email() }}
+
+            {{ form.password.label() }}
+            {{ form.password() }}
+
+            {{ form.submitButton() }}
+
+        </form>
+        {% endblock %}
+
+    </body>
+    {% endblock %}
+</html>
