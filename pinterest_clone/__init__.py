@@ -9,6 +9,7 @@ app = Flask(__name__)
 dotenv.load_dotenv(dotenv.find_dotenv())
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI")
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+app.config["UPLOAD_FOLDER"] = "static/pictures_posts"
 
 database = SQLAlchemy(app)
 bcrypt = Bcrypt(app)

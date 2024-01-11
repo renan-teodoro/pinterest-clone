@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, FileField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 from pinterest_clone.models import User
 
@@ -25,3 +25,8 @@ class RegistrationForm(FlaskForm):
             return ValidationError(
                 "This email is already in use\nPlease log in to continue"
             )
+
+
+class PostForm(FlaskForm):
+    post = FileField("Photo", validators=[DataRequired()])
+    confirmButton = SubmitField("Publish")

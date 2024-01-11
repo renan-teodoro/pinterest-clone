@@ -6,14 +6,32 @@ Profile - {{ user }}
 
 {% block body %}
 <body>
+
     <h1>
         User Profile will be here!
     </h1>
+    
+    {% if form %}
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+
+        {{ form.post() }}
+        {{ form.confirmButton() }}
+    </form>
+    {% endif %}
 
     <h2>
-        This is the {{ user }}'s profile
+        This is the {{ user.username }}'s profile
     </h2>
     
         <a href="{{ url_for('logout') }}">Exit</a>
+        
+        
+        {% for post in user.posts %}
+
+        <img src=" {{ url_for('static', filename='pictures_posts/{}'.format(post.img)) }}">
+ 
+        {% endfor %}
+
 </body>
 {% endblock %}
