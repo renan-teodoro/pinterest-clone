@@ -9,6 +9,11 @@ class LoginForm(FlaskForm):
     password = PasswordField("Password", validators=[DataRequired()])
     submitButton = SubmitField("Log In")
 
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if not user:
+            raise ValidationError("Inexistent user. Please sign up to continue")
+
 
 class RegistrationForm(FlaskForm):
     email = StringField("Email", validators=[DataRequired(), Email()])
@@ -22,8 +27,15 @@ class RegistrationForm(FlaskForm):
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user:
-            return ValidationError(
-                "This email is already in use\nPlease log in to continue"
+            raise ValidationError(
+                "This email is already in use. Please log in to continue"
+            )
+
+    def validate_username(self, username):
+        user = User.query.filter_by(username=username.data).first()
+        if user:
+            raise ValidationError(
+                "This username is already exists. Please log in or choose a new username"
             )
 
 

@@ -9,25 +9,49 @@ Profile - {{ user }}
 
     {% include "navbar.html" %}
     
-    {% if form %}
-    <form method="POST" enctype="multipart/form-data">
-        {{ form.csrf_token }}
-
-        {{ form.post() }}
-        {{ form.confirmButton() }}
-    </form>
-    {% endif %}
-
-    <h2>
-        This is the {{ user.username }}'s profile
-    </h2>
+    <div class="container">
+        {% if form %}
+    
+        <form class="block-add-img" method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            <h2>{{ user.username }} - Upload file</h2>
+    
+            <div class="block-file">
+                <label for="post" class="button-file">
+                    Choose file
+                    {{ form.post(class="input-file", id="post") }}
+                </label>
+                <span id="img-file" class=""></span>
+            </div>
+    
+            {{ form.confirmButton(class="button-login") }}
+        </form>
         
+        {% else %}
+        <div class="block-add-img">
+            <h2>{{ user.username }}'s profile</h2>
+        </div>
+        {% endif %}
         
-        {% for post in user.posts %}
+        <div class="content">
+            {% for post in user.posts %}
+            <div class="block-img">
+                <img src=" {{ url_for('static', filename='pictures_posts/{}'.format(post.img)) }}" />
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 
-        <img src=" {{ url_for('static', filename='pictures_posts/{}'.format(post.img)) }}">
- 
-        {% endfor %}
+    <script>
+        let input = document.getElementById("post");
+        let imgFile = document.getElementById("img-file");
 
+        input.addEventListener("change", () => {
+            let inputImg = document.querySelector("input[type=file]").files[0];
+
+            imgFile.classList.add("visible");
+            imgFile.innerText = inputImg.name;
+        });
+    </script>
 </body>
 {% endblock %}

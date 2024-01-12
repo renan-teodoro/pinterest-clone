@@ -33,7 +33,7 @@ def create_account():
         login_user(user, remember=True)
 
         return redirect(url_for("profile", username=user.username))
-    return render_template("create-account.html", form=registrationForm)
+    return render_template("create-account.htmrl", form=registrationForm)
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
